@@ -53,12 +53,10 @@ const SignInForm = () => {
           placeholder="example@gmail.com"
           error={error.email ? error.email : ""}
           type="email"
-          onBlur={(e) => {
-            const { validate, error } = validateEmail(e.target.value);
-            handleValidation(error, validate, "email");
-          }}
           onChange={(e) => {
             setEmail(e.target.value);
+            const { validate, error } = validateEmail(e.target.value);
+            handleValidation(error, validate, "email");
           }}
         />
         <TextField
@@ -66,12 +64,10 @@ const SignInForm = () => {
           placeholder="23"
           error={error.password ? error.password : ""}
           type="password"
-          onBlur={(e) => {
-            const { validate, error } = validatePassword(e.target.value);
-            handleValidation(error, validate, "password");
-          }}
           onChange={(e) => {
             setPassword(e.target.value);
+            const { validate, error } = validatePassword(e.target.value);
+            handleValidation(error, validate, "password");
           }}
         />
         <div className="text-center py-5">
