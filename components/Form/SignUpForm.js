@@ -47,7 +47,7 @@ const SignUpForm = () => {
       e.preventDefault()
   }
   return (
-    <div className="dark:bg-gray-900 text-gray-700 border-2 dark:border-gray-700 dark:text-gray-300 rounded-md w-full lg:w-1/3 md:w-3/5 sm:w-4/5 mx-auto p-7 shadow-lg dark:shadow-gray-900">
+    <div className="dark:bg-gray-900 bg-white text-gray-700 border-2 dark:border-gray-700 dark:text-gray-300 rounded-md w-full lg:w-1/3 md:w-3/5 sm:w-4/5 mx-auto p-7 shadow-lg dark:shadow-gray-900">
       <h1 className="text-center text-3xl font-semibold text-blue-700 dark:text-gray-100">Sign Up</h1>
       <form onSubmit={handleFormSubmit}>
         <TextField
