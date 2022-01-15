@@ -17,8 +17,22 @@ const SignUpForm = () => {
     confirmPass:"",
   });
   useEffect(() => {
-    validateForm();
-  }, [error]);
+      if (name && email && password === confirmPass) {
+        for (const i in error) {
+          if (error[i]) {
+            console.log("validation failed");
+            setIsValidate(false);
+            return;
+          } else {
+            setIsValidate(true);
+            console.log("validation successful");
+          }
+        }
+      } else {
+        setIsValidate(false);
+        console.log("validation failed");
+      }
+  }, [error,email,password,confirmPass,name]);
 
   const handleValidation = (error, validate, feild) => {
     setError((prevstate) =>
@@ -28,35 +42,19 @@ const SignUpForm = () => {
     );
   };
 
-  const validateForm = () => {
-    if (name && email && password === confirmPass) {
-      for (const i in error) {
-        if (error[i]) {
-          console.log("validation failed");
-          setIsValidate(false);
-          return;
-        } else {
-          setIsValidate(true);
-          console.log("validation successful");
-        }
-      }
-    } else {
-      setIsValidate(false);
-      console.log("validation failed");
-    }
-  };
+  
   const handleFormSubmit = e => {
       e.preventDefault()
   }
   return (
-    <div className="dark:bg-gray-900 text-gray-700 border-2 dark:text-gray-300 rounded-md w-full lg:w-1/3 md:w-3/5 sm:w-4/5 mx-auto p-7 shadow-lg dark:shadow-gray-900">
+    <div className="dark:bg-gray-900 text-gray-700 border-2 dark:border-gray-700 dark:text-gray-300 rounded-md w-full lg:w-1/3 md:w-3/5 sm:w-4/5 mx-auto p-7 shadow-lg dark:shadow-gray-900">
       <h1 className="text-center text-3xl font-semibold text-blue-700 dark:text-gray-100">Sign Up</h1>
       <form onSubmit={handleFormSubmit}>
         <TextField
           title="User Name"
           placeholder="example123"
           error={error.name ? error.name : ""}
-          type="email"
+          type="text"
           onChange={(e) => {
             setName(e.target.value);
             const { validate, error } = validateUserName(e.target.value);
